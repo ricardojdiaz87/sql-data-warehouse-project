@@ -166,7 +166,7 @@ BEGIN
 		PRINT '>> Inserting Data Into: silver.erp_cust_az12';
 		INSERT INTO silver.erp_cust_az12 (
 			cid,
-			bday,
+			bdate,
 			gen
 		)
 		SELECT
@@ -175,9 +175,9 @@ BEGIN
 				ELSE cid
 			END AS cid, 
 			CASE
-				WHEN bday > GETDATE() THEN NULL
-				ELSE bday
-			END AS bday, -- Set future birthdates to NULL
+				WHEN bdate > GETDATE() THEN NULL
+				ELSE bdate
+			END AS bdate, -- Set future birthdates to NULL
 			CASE
 				WHEN UPPER(TRIM(gen)) IN ('F', 'FEMALE') THEN 'Female'
 				WHEN UPPER(TRIM(gen)) IN ('M', 'MALE') THEN 'Male'
